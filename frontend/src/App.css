@@ -1,13 +1,16 @@
-/* Modern Minimalist Styles */
+/* Modern Cool Styles */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Typography */
+/* Custom font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
-  color: #374151;
+  color: #ffffff;
+  background: #0f0f0f;
 }
 
 /* Smooth scrolling */
@@ -15,93 +18,215 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar - minimal */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f9fafb;
+  background: rgba(15, 15, 15, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 3px;
+  background: linear-gradient(to bottom, #a855f7, #ec4899);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: linear-gradient(to bottom, #9333ea, #db2777);
 }
 
-/* Backdrop blur for navigation */
+/* Gradient animation */
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Floating animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delay {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float-delay 6s ease-in-out infinite 2s;
+}
+
+/* Backdrop blur */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
 .backdrop-blur-sm {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+/* Text selection */
+::selection {
+  background-color: rgba(168, 85, 247, 0.3);
+  color: white;
 }
 
 /* Focus styles */
 button:focus,
 input:focus,
 textarea:focus {
-  outline: 2px solid #2563eb;
+  outline: 2px solid rgba(168, 85, 247, 0.5);
   outline-offset: 2px;
 }
 
-/* Text selection */
-::selection {
-  background-color: #dbeafe;
-  color: #1e40af;
+/* Cursor */
+* {
+  cursor: none;
 }
 
-/* Button hover states */
-button {
-  cursor: pointer;
+button, a, input, textarea {
+  cursor: none;
 }
 
-/* Image optimization */
+/* Background grid */
+.bg-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Glow effects */
+.glow {
+  filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.5));
+}
+
+.glow-hover:hover {
+  filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.7));
+  transition: filter 0.3s ease;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+}
+
+/* Button animations */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-shine:hover::before {
+  left: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-6xl {
+    font-size: 3rem;
+  }
+  .text-8xl {
+    font-size: 4rem;
+  }
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Form elements */
-input, textarea {
-  font-family: inherit;
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: #6b7280;
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .text-5xl {
-    font-size: 2.5rem;
+/* Loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
   }
-  .text-6xl {
-    font-size: 3rem;
+  50% {
+    opacity: 0.5;
   }
 }
 
-/* Minimal hover effects */
-.hover-lift:hover {
-  transform: translateY(-1px);
-  transition: transform 0.2s ease;
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Clean transitions */
-* {
-  transition-property: color, background-color, border-color, transform, opacity;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
+/* Parallax effect */
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-/* Grid responsive improvements */
-@media (max-width: 640px) {
-  .grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
+/* Modern shadows */
+.shadow-modern {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.shadow-modern-hover:hover {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 /* Accessibility improvements */
@@ -114,16 +239,16 @@ textarea::placeholder {
   }
 }
 
-/* High contrast mode support */
+/* High contrast mode */
 @media (prefers-contrast: high) {
-  .border-gray-200 {
-    border-color: #000;
+  .text-gray-300 {
+    color: #e5e7eb;
   }
-  .border-gray-300 {
-    border-color: #000;
+  .text-gray-400 {
+    color: #d1d5db;
   }
-  .text-gray-600 {
-    color: #000;
+  .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -133,40 +258,89 @@ textarea::placeholder {
     display: none;
   }
   
-  section {
-    page-break-inside: avoid;
+  .bg-gradient-to-br {
+    background: white !important;
+    color: black !important;
   }
   
-  .bg-gray-50 {
-    background: white !important;
+  * {
+    color: black !important;
   }
 }
 
-/* Loading states */
-.loading {
-  opacity: 0.6;
-  pointer-events: none;
+/* Mobile navigation */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    z-index: 50;
+  }
 }
 
-/* Clean minimal animations */
-@keyframes fadeIn {
+/* Custom animations */
+@keyframes slideInUp {
   from {
+    transform: translateY(50px);
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease-out;
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-out;
 }
 
-/* Mobile navigation improvements */
-@media (max-width: 768px) {
-  nav .hidden {
-    display: none;
+@keyframes fadeInScale {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
   }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+/* Improved form styling */
+input:focus,
+textarea:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+/* Button hover improvements */
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
